@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Story</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <form action="/uploadFile" method="post" th:object="${storyDTO}" enctype="multipart/form-data">
+        <h1>Upload Story</h1>
+        <label for="category">Category:</label>
+        <input type="text" id="category" th:field="*{category}" required><br><br>
+        <label for="file">Select Story:</label>
+        <input type="file" id="file" name="storyFile" required><br><br>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

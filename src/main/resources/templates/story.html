@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Find</title>
+<link rel="stylesheet" href="/story.css">
+</head>
+<body>
+  <style>
+    .container{
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    th, tr, td{
+      border: 1px solid black;
+    }
+  </style>
+  <div class="container">
+    <h1>Find Story</h1>
+    <form action="/storyFind" method="post" enctype="multipart/form-data">
+        <label for="file">Select File:</label>
+        <input type="file" id="file" name="storyFile" required multiple><br><br>
+        <button type="submit">Find</button>
+    </form>
+  
+    <h2>Result: </h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr th:each="item : ${stories}">
+          <td th:text="${item.id}"></td>
+          <td th:text="${item.title}"></td>
+          <td th:text="${item.author}"></td>
+          <td th:text="${item.category}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
